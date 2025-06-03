@@ -1,26 +1,35 @@
-@import "tailwindcss";
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* --- Ahora tus variables y @layer personalizados: --- */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Aquí van tus variables CSS (colores, radio, etc.) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    /* ... */
+  }
+  .dark {
+    /* Variables para modo oscuro */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* ... */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tus utilidades personalizadas */
+@layer utilities {
+  .wrapper {
+    @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
+  }
+  /* ... todas las clases @apply que agregaste en tu ejemplo */
 }
+
+/* Estilos globales fuera de @layer (ej. body, tipografías, etc.) */
+body {
+  font-family: var(--font-poppins);
+}
+
+/* Si tienes otras reglas CSS puntuales fuera de Tailwind, aquí */
